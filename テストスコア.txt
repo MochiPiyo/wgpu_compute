@@ -1,0 +1,64 @@
+
+
+
+innerだけにしたらようやく速くなった。全体はdevice作成とかも含む時間。
+9600k 定格
+caluclation range = 0..10000000
+1 core for: 6.337sec
+1 core map: 1.086sec
+multi core: 1.107sec
+gpu inner : 0.839sec
+gpu       : 1.110sec
+
+caluclation range = 0..1000000
+1 core for: 0.575sec
+1 core map: 0.097sec
+multi core: 0.108sec
+gpu inner : 0.090sec
+gpu       : 0.354sec
+
+-----
+9600k 
+rtx 3060
+
+caluclation range = 0..1000
+1 core for: 0.000sec
+1 core map: 0.000sec
+multi core: 0.000sec
+gpu       : 0.650sec
+
+caluclation range = 0..10000
+1 core for: 0.003sec
+1 core map: 0.001sec
+multi core: 0.000sec
+gpu       : 0.682sec
+
+caluclation range = 0..100000
+1 core for: 0.047sec
+1 core map: 0.010sec
+multi core: 0.010sec
+gpu       : 0.630sec
+
+1M
+caluclation range = 0..1000000
+1 core for: 0.517sec
+1 core map: 0.103sec
+multi core: 0.121sec
+gpu       : 0.746sec
+
+10M
+caluclation range = 0..10000000
+1 core for: 5.752sec
+1 core map: 1.098sec
+multi core: 1.113sec
+gpu       : 1.469sec
+
+100M
+caluclation range = 0..100000000
+1 core for: 60.965sec
+1 core map: 12.252sec (これ馬鹿正直にやると3.2GBメモリ食うはずがmapだと最大700MBが山、なぜだ)
+multi core: 12.250sec
+gpu => fail
+Caused by:
+    In Device::create_bind_group
+    buffer binding 0 range 399999996 exceeds `max_*_buffer_binding_size` limit 134217728
